@@ -61,7 +61,7 @@ df_pcn_member <- read_excel(path = './data/ePCN.xlsx', sheet = 'PCN Core Partner
 # -------------------------
 
 # Join the practice registration to the PCN membership data and group back up into PCN level
-# NB: Practices not registered as a member of a PCN will be assigned the PCN code 'U', unallocated
+# NB: Practices not registered as a member of a PCN will be assigned the PCN code 'U'
 df_pcn_popn <- df_practice_popn %>% 
   left_join(
     df_pcn_member,
@@ -152,7 +152,7 @@ df_pcn_imd <- df_pcn_imd %>%
     imd_score,
     imd_decile
   ) %>%
-  replace_na(list(pcn_code = 'Unknown', postcode = 'Unknown', subicb_code = 'UNK'))
+  replace_na(list(pcn_name = 'Unknown', postcode = 'Unknown', subicb_code = 'UNK'))
 
 dir.create('./outputs', showWarnings = FALSE, recursive = TRUE)
 write.csv(df_practice_imd, './outputs/practice_imd.csv', row.names = FALSE)
